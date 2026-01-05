@@ -3,6 +3,7 @@ const buttonDiv = document.querySelector('.buttons');
 const calculatorInput = document.querySelector('.calculator-input');
 const form = document.querySelector('.calculator-display');
 let result = 0;
+let cNumber = 0;
 let operator = '';
 let number = 0;
 let i = 0;
@@ -82,6 +83,7 @@ buttons.forEach((button) => {
             result = 0;
             number = 0;
             calculatorInput.value = result;
+            
         });
     }
     else if(button.innerText === 'BackSpace'){

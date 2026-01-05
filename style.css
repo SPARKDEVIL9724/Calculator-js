@@ -119,3 +119,13 @@ button:nth-child(16){
     box-shadow: none;
     cursor: default;
 }
+
+.no-spinner {
+  appearance: textfield;
+}
+
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
