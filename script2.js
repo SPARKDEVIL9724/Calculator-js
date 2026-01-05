@@ -7,8 +7,6 @@ function initializeCalculator(){
     let cNumber = 0;
     let operator = '';
     let number = '';
-    let i = 0;
-    let lastClicked;
 
     //null checks
     if(!containerDiv || !buttonDiv || !calculatorInput){
@@ -43,6 +41,8 @@ function initializeCalculator(){
 
     // input handling
     function handleInput(value){
+        if(value === 'empty') return;
+
         if (/[0-9]/.test(value)){
             number += value;
             calculatorInput.value = number;
@@ -62,6 +62,13 @@ function initializeCalculator(){
             if(number === '' && operator === '') return;
             if(operator && number !== ''){
                 result = operation(operator, Number(number), cNumber);
+                if (Number.isNaN(result)) {
+                    calculatorInput.value = 'Cannot divide by 0';
+                    number = '';
+                    operator = '';
+                    cNumber = 0;
+                    return;
+                }
                 calculatorInput.value = result;
                 cNumber =  result;
             }
@@ -92,6 +99,13 @@ function initializeCalculator(){
         if(value === '='){
             if(!operator || number === '') return;
             result = operation(operator, Number(number), cNumber);
+            if (Number.isNaN(result)) {
+                calculatorInput.value = 'Cannot divide by 0';
+                number = '';
+                operator = '';
+                cNumber = 0;
+                return;
+            }
             calculatorInput.value = result;
             number = '';
             cNumber = result;
