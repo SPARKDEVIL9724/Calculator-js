@@ -43,6 +43,8 @@ function initializeCalculator(){
     function handleInput(value){
         if(value === 'empty') return;
 
+        if (number === '' && operator && value !== '=') return;
+
         if (/[0-9]/.test(value)){
             number += value;
             calculatorInput.value = number;
